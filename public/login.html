@@ -6,28 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AquaTech | Login</title>
+    <title>LastCore | Login</title>
 
     <script src="./js/sessao.js"></script>
 
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="icon" href="https://wallpapercave.com/wp/wp5432179.jpg">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
 
-    <!--Header-->
-
     <div class="header">
         <div class="container">
-            <h1 class="titulo">AquaTech</h1>
+            <h1 class="titulo">LastCore</h1>
             <ul class="navbar">
                 <li>
                     <a href="index.html">Inicial</a>
                 </li>
                 <li>
-                    <a href="simulador.html">Simulador</a>
+                    <a href="quiz.html">Quiz</a>
                 </li>
                 <li>|</li>
                 <li class="agora">
@@ -49,7 +47,7 @@
         </div>
         <div class="container">
             <div class="card card-login">
-                <h2>Olá de volta!</h2>
+                <h2>Seja bem-vindo de volta!</h2>
                 <div class="formulario">
                     <div class="campo">
                         <span>E-mail:</span>
@@ -71,14 +69,13 @@
         </div>
     </div>
 
-    <!--footer inicio-->
+
     <div class="footer">
         <div class="container">
-            <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
+            <h4>Feito com amor por Maria Luiza, aluna &hearts; SPTech &copy; 2026</h4>
             <span class="version">v1.0.0</span>
         </div>
     </div>
-    <!--footer fim-->
 
 </body>
 
@@ -86,74 +83,118 @@
 
 <script>
 
+function entrar() {
+  aguardar();
 
-    function entrar() {
-        aguardar();
+  var emailVar = email_input.value;
+  var senhaVar = senha_input.value;
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+  if (emailVar == "" || senhaVar == "") {
+    mostrarErro("Todos os campos devem ser preenchidos.");
+    finalizarAguardar();
+    return false;
+  }
 
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+  if (emailVar != emailVar.toLowerCase()) {
+    mostrarErro("O e-mail deve ser digitado apenas em letras minúsculas.");
+    finalizarAguardar();
+    return false;
+  }
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
+  if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".") == -1) {
+    mostrarErro("Formato de e-mail inválido.");
+    finalizarAguardar();
+    return false;
+  }
 
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
-                    setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
+  var especiais = "!@#$%^&*()_+{}[]|:;,.<>?";
+  var caractereEspecial = false;
+  for (var i = 0; i < senhaVar.length; i++) {
+    if (especiais.indexOf(senhaVar[i]) != -1) {
+      caractereEspecial = true;
+      break;
     }
+  }
+  if (!caractereEspecial) {
+    mostrarErro("A senha deve conter pelo menos um caractere especial.");
+    finalizarAguardar();
+    return false;
+  }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
+  var Numero = false;
+  for (var i = 0; i < senhaVar.length; i++) {
+    if (!isNaN(senhaVar[i]) && senhaVar[i] != " ") {
+      Numero = true;
+      break;
     }
+  }
+  if (!Numero) {
+    mostrarErro("A senha deve conter pelo menos um número.");
+    finalizarAguardar();
+    return false;
+  }
+
+  var letraMaiuscula = false;
+  for (var i = 0; i < senhaVar.length; i++) {
+    if (senhaVar[i] >= "A" && senhaVar[i] <= "Z") {
+      letraMaiuscula = true;
+      break;
+    }
+  }
+  if (!letraMaiuscula) {
+    mostrarErro("A senha deve conter pelo menos uma letra maiúscula.");
+    finalizarAguardar();
+    return false;
+  }
+
+  console.log("FORM LOGIN: ", emailVar);
+  console.log("FORM SENHA: ", senhaVar);
+
+  fetch("/usuarios/autenticar", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      emailServer: emailVar,
+      senhaServer: senhaVar
+    })
+  }).then(function (resposta) {
+    if (resposta.ok) {
+      resposta.json().then(json => {
+        sessionStorage.EMAIL_USUARIO = json.email;
+        sessionStorage.NOME_USUARIO = json.nome;
+        sessionStorage.ID_USUARIO = json.id;
+        sessionStorage.AQUARIOS = JSON.stringify(json.aquarios);
+
+        mostrarSucesso("Login realizado com sucesso! Redirecionando...");
+        setTimeout(function () {
+          window.location.href = "quiz.html";
+        }, 1000);
+      });
+    } else {
+      resposta.text().then(texto => {
+        mostrarErro("E-mail ou senha incorretos.");
+        finalizarAguardar(texto);
+      });
+    }
+  }).catch(function (erro) {
+    console.log(erro);
+    mostrarErro("Erro inesperado no login.");
+  });
+
+  return false;
+}
+
+function mostrarErro(msg) {
+  cardErro.style.display = "block";
+  cardErro.style.backgroundColor = "red";
+  mensagem_erro.innerHTML = msg;
+  setInterval(sumirMensagem, 5000);
+}
+
+function mostrarSucesso(msg) {
+  cardErro.style.display = "block";
+  cardErro.style.backgroundColor = "green";
+  mensagem_erro.innerHTML = msg;
+}
 
 </script>

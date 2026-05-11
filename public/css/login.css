@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  padding: 5;
+  padding: 0;
   font-family: 'Arial', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: rgb(21, 31, 20);
 }
@@ -17,7 +17,7 @@ body {
 
 .container {
   display: flex;
-  width: 70%;
+  width: 80%;
   margin: auto;
 }
 
@@ -27,7 +27,7 @@ body {
 }
 
 .header .container {
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   height: 100%;
 }
@@ -60,15 +60,16 @@ body {
   margin: 0;
 }
 
+
 .banner {
   height: var(--tamanho-banner);
   color: white;
-  background-image: url('https://wallup.net/wp-content/uploads/2016/01/93997-The_Last_of_Us-video_games-Ellie-Joel.jpg');
+  background-image: url('https://wallpaperaccess.com/full/459687.jpg');
   background-size: cover;
 }
 
 .banner .container {
-  justify-content: right;
+  justify-content: center;
   align-items: center;
   height: 100%;
 }
@@ -84,68 +85,39 @@ body {
   font-weight: 800;
 }
 
-/* SOCIAL corrigido */
+
 .social {
-  background-color: #bfbfbf;
+  background-color: #aeaeae;
   display: flex;
-  flex-direction: column; /* empilha os tópicos */
-  align-items: center;
-  padding: 40px 0;
 }
 
 .social .container {
-  display: flex;
-  flex-direction: column; /* garante que cada box fique abaixo da outra */
-  align-items: center;
-  width: 100%;
-}
-
-/* MODIFICAÇÃO: box com imagem menor e texto ao lado */
-.box {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: #d9d9d9;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  width: 80%;
-  max-width: 900px;
-  margin: 20px 0;
-  text-align: left;
-  border: none; /* remove qualquer borda visível */
+  justify-content: center;
 }
 
 .box img {
-  width: 180px;
-  height: auto;
-  border-radius: 8px;
-  margin-right: 25px;
-  border: none; /* remove borda da imagem */
+  width: 170px;
 }
 
-.box .texto {
-  flex: 1;
+.social .container .boxes {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 30px 0;
 }
 
-.box .texto h4 {
-  margin: 0 0 10px 0;
-  font-size: 1.4em;
-  color: #222;
+.social p {
+  text-align: center;
 }
 
-.box .texto p {
-  margin: 0;
-  font-size: 1.1em;
-  color: #333;
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-/* Seções independentes */
-.criacao { background-color: #e8e8e8; }
-.ellie { background-color: #f0f0f0; }
-.serie { background-color: #e0e0e0; }
 
 /* FOOTER */
+
 .footer {
   background-color: #004011;
   height: 150px;
@@ -164,12 +136,13 @@ body {
 }
 
 /* LOGIN */
+
 .login {
   min-height: 100vh; 
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('https://wallpapercave.com/wp/wp6448329.jpg');
+  background-image: url('https://wallpaperaccess.com/full/459687.jpg');
   background-size: cover;
   background-position: center;
   padding: 20px 0; 
@@ -188,6 +161,7 @@ body {
   backdrop-filter: blur(5px);
   background-color: rgba(229, 229, 229, 0.9);
 }
+
 
 .card {
   width: 50%;
@@ -274,6 +248,7 @@ body {
 }
 
 /* FORMULARIO */
+
 .alerta_erro{
   display: flex;
   justify-content: flex-end;
@@ -339,7 +314,20 @@ input {
   width: 50px;
 }
 
+/* SIMULADOR */
+
+.simulador {
+  color: white;
+}
+
+.simulador .container {
+  flex-direction: column;
+  overflow: scroll; 
+  height: var(--tamanho-simulador);
+}
+
 /* ALERTA */
+
 #alerta {
   position: absolute;
   right: 0;
@@ -393,76 +381,4 @@ input {
   margin: 20px auto;
   width: 80%;
   border-radius: 10px;
-}
-
-.simulador {
-  color: white;
-}
-
-.simulador .container {
-  flex-direction: column;
-  min-height: 300px;
-  justify-content: center;
-}
-
-.simulador {
-  width: 80%;
-  margin: 40px auto;
-  background: url("https://images.hdqwalls.com/download/2023-the-last-of-us-4k-yt-1152x864.jpg") no-repeat center center;
-  background-size: cover;
-  color: #fff;
-  padding: 40px;
-  border-radius: 10px;
-  position: relative; 
-  overflow: hidden;
-}
-
-.simulador::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6); 
-  z-index: 0;
-}
-
-.simulador h2,
-.simulador label,
-.simulador input,
-.simulador button {
-  position: relative;
-  z-index: 1;
-}
-
-.simulador h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-.simulador label {
-  font-size: 18px;
-  display: block;
-  margin-bottom: 8px;
-}
-
-.simulador input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 6px;
-  border: none;
-}
-
-.simulador button {
-  background: #813715;
-  color: #fff;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.simulador button:hover {
-  background: #813715;
 }

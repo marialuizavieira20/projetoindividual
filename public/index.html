@@ -6,25 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AquaTech | Página Inicial</title>
+    <title>LastCore | Página Inicial</title>
 
     <script src="./js/sessao.js"></script>
 
     <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
+    <link rel="icon" href="https://wallpapercave.com/wp/wp5432179.jpg">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
     <div class="header">
       <div class="container">
-        <h1 class="titulo">AquaTech</h1>
+        <h1 class="titulo">LastCore</h1>
         <ul class="navbar">
           <li class="agora">
             <a href="#">Inicial</a>
           </li>
           <li>
-            <a href="simulador.html">Simulador</a>
+            <a href="quiz.html">Quiz</a>
           </li>
           <li>|</li>
           <li>
@@ -39,44 +39,57 @@
   
     <div class="banner">
       <div class="container">
-        <p>Preservando <span>hoje</span> para existirem <span>amanhã</span>.</p>
+        <p><span>Sobreviver</span> é apenas o <span>começo.</span></p>
       </div>
     </div>
   
-    <div class="social">
-      <div class="container">
-        <div class="boxes">
-          <div class="box">
-            <img src="assets/imgs/planet-earth_color.png">
-            <h4>Missão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/lightbulb_color.png">
-            <h4>Visão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/growth_color.png">
-            <h4>Valores</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-        </div>
+   <<div class="social">
+  <div class="container">
+
+    <div class="box criacao">
+      <img src="https://wallpapercave.com/wp/wp1811272.jpg" alt="Razão para Criação">
+      <div class="texto">
+        <h4>Razão para Criação</h4>
+        <p>The Last of Us nasceu do desejo da Naughty Dog de contar uma história que fosse além da ação tradicional dos videogames. <br><br> A ideia era mergulhar os jogadores em um mundo devastado por uma pandemia, mas que ao mesmo tempo revelasse a beleza e a fragilidade das relações humanas.<br><br> Joel e Ellie não são apenas personagens em busca de sobrevivência, mas símbolos de esperança, dor e amor em meio ao caos.<br><br><b> A criação do jogo foi inspirada em narrativas cinematográficas intensas, trazendo uma experiência que mistura tensão, emoção e dilemas morais, transformando-o em um marco na história dos games.</b></p>
       </div>
     </div>
-  
+
+    <div class="box ellie">
+      <img src="https://images2.alphacoders.com/776/776864.jpg" alt="A vida de Ellie Williams">
+      <div class="texto">
+        <h4>A vida de Ellie Williams</h4>
+        <p>Ellie é muito mais do que uma protagonista: ela representa a força da juventude em um mundo que já não oferece inocência.<br><br> Nascida em meio ao apocalipse, cresceu sem conhecer a normalidade, mas carregando consigo um segredo que a torna única — sua imunidade ao fungo Cordyceps.<br><br> Ao longo da jornada, Ellie revela coragem e vulnerabilidade, enfrentando perdas que moldam sua personalidade.<br><br> <b>Seu humor sarcástico contrasta com a dureza da realidade, e sua evolução, especialmente em The Last of Us Part II, mostra uma jovem que amadurece diante da violência, da vingança e da difícil busca por sentido em um mundo quebrado.</b></p>
+      </div>
+    </div>
+
+    <div class="box serie">
+      <img src="https://d1lss44hh2trtw.cloudfront.net/assets/article/2023/01/17/the-last-of-us-show_feature.jpg" alt="Do jogo para série">
+      <div class="texto">
+        <h4>Do jogo para série</h4>
+        <p>Quando a HBO decidiu adaptar The Last of Us, o desafio era enorme: transformar uma obra já considerada uma das melhores narrativas dos videogames em uma série capaz de emocionar tanto fãs quanto novos espectadores.<br><br> O resultado foi uma produção que respeitou profundamente o material original, mas também expandiu histórias secundárias, como a emocionante trajetória de Bill e Frank.<br><br> Pedro Pascal e Bella Ramsey deram vida a Joel e Ellie com intensidade e autenticidade, conquistando o público.<br><br><b>A série trouxe novas perspectivas, explorou detalhes do universo e mostrou que a força da história não está apenas nos infectados, mas nas relações humanas e nos dilemas que surgem quando tudo parece perdido.</b></p>
+      </div>
+    </div>
+  </div>
+</div>
+
     <div class="footer">
       <div class="container">
-        <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
+        <h4>Feito com amor por Maria Luiza, aluna &hearts; SPTech &copy; 2026</h4>
         <span class="version">v1.0.0</span>
       </div>
     </div>
   </body>
-
 </html>
+<script>
+
+function mostrar(id) {
+  document.querySelectorAll('.pagina').forEach(p => p.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+  document.querySelector('.social').style.display = 'none';
+}
+
+function voltar() {
+  document.querySelectorAll('.pagina').forEach(p => p.style.display = 'none');
+  document.querySelector('.social').style.display = 'flex';
+}
+</script>

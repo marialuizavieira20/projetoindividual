@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LastCore | Quiz</title>
+
+    <script src="./js/sessao.js"></script>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="icon" href="https://wallpapercave.com/wp/wp5432179.jpg">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+
+<body>
+
+    <!--header inicio-->
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo">LastCore</h1>
+            <ul class="navbar">
+                <li>
+                    <a href="./index.html">Inicial</a>
+                </li>
+                <li class="agora">Quiz</li>
+                <li>|</li>
+                <li>
+                    <a href="./login.html">Login</a>
+                </li>
+                <li>
+                    <a href="./cadastro.html">Cadastro</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- quiz inicio -->
+    <div class="simulador">
+        <div class="container">
+            <h2>Quiz</h2>
+            <form id="quizForm">
+                <label>Você já assistiu ou jogou algo relacionado a The Last of Us?</label><br>
+                <input type="text" name="resposta1" required><br><br>
+
+                <label>Qual genêro de história você mais gosta?</label><br>
+                <input type="text" name="resposta2" required><br><br>
+
+                <label>Você prefere jogos com mais foco em:</label><br>
+                <input type="text" name="resposta3" required><br><br>
+
+                <label>Qual personagem te chama mais atenção?</label><br>
+                <input type="text" name="resposta4" required><br><br>
+
+                <label>Qual emoção você mais espera sentir em uma história?</label><br>
+                <input type="text" name="resposta5" required><br><br>
+
+                <button type="submit">Enviar Quiz</button>
+            </form>
+        </div>
+    </div>
+    <!-- quiz fim -->
+
+    <!--footer inicio-->
+    <div class="footer">
+        <div class="container">
+            <h4>Feito com amor por Maria Luiza, aluna &hearts; SPTech &copy; 2026</h4>
+            <span class="version">v1.0.0</span>
+        </div>
+    </div>
+    <!--footer fim-->
+
+    <script>
+        document.getElementById("quizForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const respostas = [
+                { pergunta: "Conhecimento sobre o Jogo", resposta: e.target.resposta1.value },
+                { pergunta: "Gênero Favorito", resposta: e.target.resposta2.value },
+                { pergunta: "Foco em Jogos", resposta: e.target.resposta3.value },
+                { pergunta: "Melhor Personagem", resposta: e.target.resposta4.value },
+                { pergunta: "Emoção", resposta: e.target.resposta5.value }
+            ];
+
+            await fetch("/quiz", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ respostas })
+            });
+
+            window.location.href = "/dashboard.html";
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,11 +1,3 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
-
-/*
-comandos para mysql server
-*/
-
 create database lastcore1;
 use lastcore1;
 
@@ -44,4 +36,3 @@ VALUES ('Carolina Dias', 'caroldias@gmail.com', 'carol875!', 'XPTO26');
 INSERT INTO usuarios (nome, email, senha, codigo_ativacao)
 VALUES ('Joaquim Veloso', 'joaquimveloso@gmail.com', 'veloso342!', 'CORE13');
 
-SELECT * FROM usuarios;
