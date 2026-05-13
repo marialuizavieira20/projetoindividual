@@ -24,14 +24,25 @@ CREATE TABLE perguntas (
   categoria VARCHAR(50)
 );
 
+CREATE TABLE alternativas (
+    idAlternativa INT AUTO_INCREMENT PRIMARY KEY,
+    texto VARCHAR(255) NOT NULL,
+    fkPergunta INT NOT NULL,
+    FOREIGN KEY (fkPergunta)
+        REFERENCES perguntas(idPergunta)
+);
 
-CREATE TABLE respostas (
-  usuario_id INT NOT NULL,
-  pergunta_idPergunta INT NOT NULL,
-  resposta VARCHAR(255) NOT NULL,
-  PRIMARY KEY (usuario_id, pergunta_idPergunta),
-  FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
-  FOREIGN KEY (pergunta_idPergunta) REFERENCES perguntas(idPergunta)
+  CREATE TABLE respostas (
+    fkUsuario INT,
+    fkPergunta INT,
+    fkAlternativa INT,
+    PRIMARY KEY (fkUsuario, fkPergunta),
+    FOREIGN KEY (fkUsuario)
+        REFERENCES usuarios(id),
+    FOREIGN KEY (fkPergunta)
+        REFERENCES perguntas(idPergunta),
+    FOREIGN KEY (fkAlternativa)
+        REFERENCES alternativas(idAlternativa)
 );
 
 -- Inserindo usuários com códigos de ativação
