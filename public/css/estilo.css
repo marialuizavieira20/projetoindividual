@@ -10,7 +10,7 @@ body {
 :root {
   --tamanho-header: 80px;
   --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-quiz: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-footer: 65px;
 }
@@ -84,23 +84,21 @@ body {
   font-weight: 800;
 }
 
-/* SOCIAL corrigido */
 .social {
   background-color: #bfbfbf;
   display: flex;
-  flex-direction: column; /* empilha os tópicos */
+  flex-direction: column; 
   align-items: center;
   padding: 40px 0;
 }
 
 .social .container {
   display: flex;
-  flex-direction: column; /* garante que cada box fique abaixo da outra */
+  flex-direction: column; 
   align-items: center;
   width: 100%;
 }
 
-/* MODIFICAÇÃO: box com imagem menor e texto ao lado */
 .box {
   display: flex;
   align-items: center;
@@ -113,7 +111,7 @@ body {
   max-width: 900px;
   margin: 20px 0;
   text-align: left;
-  border: none; /* remove qualquer borda visível */
+  border: none; 
 }
 
 .box img {
@@ -121,7 +119,7 @@ body {
   height: auto;
   border-radius: 8px;
   margin-right: 25px;
-  border: none; /* remove borda da imagem */
+  border: none;
 }
 
 .box .texto {
@@ -140,12 +138,10 @@ body {
   color: #333;
 }
 
-/* Seções independentes */
 .criacao { background-color: #e8e8e8; }
 .ellie { background-color: #f0f0f0; }
 .serie { background-color: #e0e0e0; }
 
-/* FOOTER */
 .footer {
   background-color: #004011;
   height: 150px;
@@ -395,17 +391,19 @@ input {
   border-radius: 10px;
 }
 
-.simulador {
+/* CSS do Quiz */
+
+.quiz {
   color: white;
 }
 
-.simulador .container {
+.quiz .container {
   flex-direction: column;
   min-height: 300px;
   justify-content: center;
 }
 
-.simulador {
+.quiz {
   width: 80%;
   margin: 40px auto;
   background: url("https://images.hdqwalls.com/download/2023-the-last-of-us-4k-yt-1152x864.jpg") no-repeat center center;
@@ -417,7 +415,7 @@ input {
   overflow: hidden;
 }
 
-.simulador::before {
+.quiz::before {
   content: "";
   position: absolute;
   top: 0; left: 0;
@@ -426,43 +424,54 @@ input {
   z-index: 0;
 }
 
-.simulador h2,
-.simulador label,
-.simulador input,
-.simulador button {
+.quiz h2,
+.quiz label,
+.quiz select,
+.quiz button {
   position: relative;
   z-index: 1;
 }
 
-.simulador h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-.simulador label {
-  font-size: 18px;
-  display: block;
-  margin-bottom: 8px;
-}
-
-.simulador input {
+.quiz select {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 20px;
-  border-radius: 6px;
   border: none;
+  border-radius: 8px;
+  background-color: rgba(255,255,255,0.9);
+  font-size: 15px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.3s;
 }
 
-.simulador button {
+.quiz select:hover {
+  background-color: white;
+}
+
+.quiz select:focus {
+  box-shadow: 0 0 10px #813715;
+}
+
+.quiz button {
   background: #813715;
-  color: #fff;
+  color: white;
   padding: 12px 20px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(129, 55, 21, 0.5);
 }
 
-.simulador button:hover {
-  background: #813715;
+.quiz button:hover {
+  background: #a3471d;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(129, 55, 21, 0.8);
+}
+
+.quiz button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 5px rgba(129, 55, 21, 1);
 }

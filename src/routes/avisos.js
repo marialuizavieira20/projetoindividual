@@ -1,4 +1,4 @@
-var express = require("express");
+/* var express = require("express");
 var router = express.Router();
 
 var avisoController = require("../controllers/avisoController");
@@ -27,4 +27,4 @@ router.delete("/deletar/:idAviso", function (req, res) {
     avisoController.deletar(req, res);
 });
 
-module.exports = router;
+module.exports = router; */

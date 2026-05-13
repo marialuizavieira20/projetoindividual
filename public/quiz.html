@@ -16,7 +16,6 @@
 
 <body>
 
-    <!--header inicio-->
     <div class="header">
         <div class="container">
             <h1 class="titulo">LastCore</h1>
@@ -36,63 +35,163 @@
         </div>
     </div>
 
-    <!-- quiz inicio -->
-    <div class="simulador">
+    <div class="quiz">
         <div class="container">
             <h2>Quiz</h2>
             <form id="quizForm">
-                <label>Você já assistiu ou jogou algo relacionado a The Last of Us?</label><br>
-                <input type="text" name="resposta1" required><br><br>
 
-                <label>Qual genêro de história você mais gosta?</label><br>
-                <input type="text" name="resposta2" required><br><br>
+                <label> Em um cenário pós-apocalíptico, qual lugar você escolheria para viver? </label> <br> <select
+                    id="select_lugar">
+                    <option value=""> Escolha uma opção </option>
+                    <option value="seattle"> Seattle </option>
+                    <option value="stbarbara"> Santa Barbara </option>
+                    <option value="atlanta"> Atlanta </option>
+                    <option value="silverlake"> Silver Lake </option>
+                </select> <br><br>
 
-                <label>Você prefere jogos com mais foco em:</label><br>
-                <input type="text" name="resposta3" required><br><br>
+                <label> Se depois de alguns dias, faltasse comida e mantimentos, o que você faria? </label> <br> <select
+                    id="select_comida">
+                    <option value=""> Escolha uma opção </option>
+                    <option value="dividir"> Dividiria o pouco que tenho, até a alguma gota de água </option>
+                    <option value="procurar"> Me juntaria em equipe para buscar mantimentos </option>
+                    <option value="negociar"> Tentaria negociar recursos se estivesse em larga escala de pessoas
+                    </option>
+                    <option value="cacar"> Procuraria comida sozinho, deixando minha equipe de fora </option>
+                </select> <br><br>
 
-                <label>Qual personagem te chama mais atenção?</label><br>
-                <input type="text" name="resposta4" required><br><br>
+                <label> O que mais te causaria medo? </label> <br> <select id="select_medo">
+                    <option value=""> Escolha uma opção </option>
+                    <option value="solidao"> Ficar sozinho no meio do apocalipse </option>
+                    <option value="perda"> Perder pessoas importantes na minha vida </option>
+                    <option value="infectar"> Ser mordido e morrer por conta dos infectados </option>
+                    <option value="humanos"> Pessoas perigosas e gangues </option>
+                </select> <br><br>
 
-                <label>Qual emoção você mais espera sentir em uma história?</label><br>
-                <input type="text" name="resposta5" required><br><br>
+                <label> Como você resolveria os seus conflitos? </label> <br> <select id="select_conflito">
+                    <option value=""> Escolha uma opção </option>
+                    <option value="conversar"> Tentaria conversar, para não tomar nenhuma atitude precipitada </option>
+                    <option value="luta"> Resolveria na força bruta, pois seria a única maneira </option>
+                    <option value="planejar"> Criaria uma estratégia para analisar a melhor ação naquele cenário
+                    </option>
+                    <option value="evitar"> Tentaria evitar a conversa ao máximo, em prol da sobrevivência </option>
+                </select> <br><br>
 
-                <button type="submit">Enviar Quiz</button>
+                <label> O que mais importa? </label> <br> <select id="select_importancia">
+                    <option value=""> Escolha uma opção </option>
+                    <option value="familia"> Proteger a minha família e aqueles que amo </option>
+                    <option value="liberdade"> Ter liberdade e poder fazer o meu caminho sozinho </option>
+                    <option value="sobrevivencia"> Garantir sempre a minha sobrevivência, custe o que custar </option>
+                    <option value="esperanca"> Ter sempre um pingo de esperança, tentando observar algum caminho
+                        otimista </option>
+                </select> <br><br>
+
+                <label> Se você encontrasse um desconhecido ferido à beira da morte, o que faria? </label> <br>
+                <select id="select_desconhecido">
+                    <option value=""> Escolha uma opção </option>
+                    <option value="ajudar"> Iria ajudar sem nem pensar duas vezes </option>
+                    <option value="desconfianca"> Eu ajudaria, mas tomaria todo o cuidado e ficaria em alerta a todo
+                        momento </option>
+                    <option value="ignorar"> Iria embora, afinal, não é um problema meu </option>
+                    <option value="observar"> Observaria com bastante cautela, antes de tomar qualquer decisão </option>
+                </select> <br><br>
+
+                <label> Que tipo de pessoa você acredita seria nesse ambiente? </label> <br> <select id="select_perfil">
+                    <option value=""> Escolha uma opção </option>
+                    <option value="lider"> Seria um líder no meu grupo, tomando sempre a iniciativa com coragem
+                    </option>
+                    <option value="sobrevivente"> Seria um sobrevivente, que agiria de forma silenciosa </option>
+                    <option value="protetor"> Iria ser muito protetor com todos, lutando sempre pelo meu grupo </option>
+                    <option value="explorador"> Seria um explorador, caminhando sozinho para sobreviver </option>
+                </select> <br><br>
+
+                <button type="button" onclick="enviarQuiz()"> Enviar Quiz </button>
             </form>
         </div>
     </div>
-    <!-- quiz fim -->
 
-    <!--footer inicio-->
     <div class="footer">
         <div class="container">
             <h4>Feito com amor por Maria Luiza, aluna &hearts; SPTech &copy; 2026</h4>
             <span class="version">v1.0.0</span>
         </div>
     </div>
-    <!--footer fim-->
-
-    <script>
-        document.getElementById("quizForm").addEventListener("submit", async (e) => {
-            e.preventDefault();
-
-            const respostas = [
-                { pergunta: "Conhecimento sobre o Jogo", resposta: e.target.resposta1.value },
-                { pergunta: "Gênero Favorito", resposta: e.target.resposta2.value },
-                { pergunta: "Foco em Jogos", resposta: e.target.resposta3.value },
-                { pergunta: "Melhor Personagem", resposta: e.target.resposta4.value },
-                { pergunta: "Emoção", resposta: e.target.resposta5.value }
-            ];
-
-            await fetch("/quiz", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ respostas })
-            });
-
-            window.location.href = "/dashboard.html";
-        });
-    </script>
 
 </body>
 
+</html>
+<script>
+    function enviarQuiz() {
+        var lugar = select_lugar.value;
+        var comida = select_comida.value;
+        var medo = select_medo.value;
+        var conflito = select_conflito.value;
+        var importancia = select_importancia.value;
+        var desconhecido = select_desconhecido.value;
+        var perfil = select_perfil.value;
+
+        if (
+            lugar == "" ||
+            comida == "" ||
+            medo == "" ||
+            conflito == "" ||
+            importancia == "" ||
+            desconhecido == "" ||
+            perfil == ""
+        ) {
+            alert("Responda todas as perguntas!");
+        }
+
+        else {
+            var respostas = [
+                {
+                    pergunta: "Lugar para viver",
+                    resposta: lugar
+                },
+
+                {
+                    pergunta: "Falta de comida",
+                    resposta: comida
+                },
+
+                {
+                    pergunta: "Maior medo",
+                    resposta: medo
+                },
+
+                {
+                    pergunta: "Resolver conflitos",
+                    resposta: conflito
+                },
+
+                {
+                    pergunta: "O que mais importa",
+                    resposta: importancia
+                },
+
+                {
+                    pergunta: "Desconhecido ferido",
+                    resposta: desconhecido
+                },
+
+                {
+                    pergunta: "Tipo de sobrevivente",
+                    resposta: perfil
+                }
+            ];
+
+            fetch("/quiz", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    respostas
+                })
+            });
+
+            window.location.href = "/dashboard.html";
+        }
+    }
+</script>
+</body>
 </html>
