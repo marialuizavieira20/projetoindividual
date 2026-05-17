@@ -25,7 +25,7 @@ body {
 
 .header {
   height: var(--tamanho-header);
-  border-bottom: 2px solid #097a13;
+  /*border-bottom: 2px solid #097a13;*/
 }
 
 .header .container {
@@ -86,13 +86,45 @@ body {
   font-weight: 800;
 }
 
+.cadastro-box {
+  text-align: center;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.cadastro-box button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.cadastro-box button:hover {
+  animation: bounce 0.4s;
+  background-color: #45a049;
+}
+
+@keyframes bounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.15); }
+  60% {transform: scale(0.95); }
+  100% {transform: scale(1);
+  }
+}
+
 .social {
-  background-color: #bfbfbf;
+  background-color: #7ba37d;
   display: flex;
   flex-direction: column; 
   align-items: center;
-  padding: 80px 0;
-  gap: 80px;
+  padding: 30px 0;
+  gap: 40px;
 }
 
 .social .container {
@@ -163,6 +195,43 @@ body {
 .criacao { background-color: #e8e8e8; }
 .ellie { background-color: #f0f0f0; }
 .serie { background-color: #e0e0e0; }
+
+.titulo-personagens {
+  text-align: center;
+  margin: 40px 0 20px;
+}
+
+.titulo-personagens {
+  font-size: 28px;
+  font-weight: 700;
+  color: whitesmoke;
+}
+
+.personagens {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px 0;
+  flex-wrap: wrap;
+}
+
+.personagem {
+  width: 250px;
+  text-align: center;
+  margin: 15px;
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.personagem img {
+  width: 180px;
+  max-width: 220px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
 
 .footer {
   background-color: #004011;
