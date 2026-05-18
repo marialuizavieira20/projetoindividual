@@ -99,23 +99,19 @@ body {
   border: none;
   border-radius: 8px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 800;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .cadastro-box button:hover {
-  animation: bounce 0.4s;
+  transform: scale(1.05);
   background-color: #45a049;
 }
 
-@keyframes bounce {
-  0% { transform: scale(1); }
-  30% { transform: scale(1.15); }
-  60% {transform: scale(0.95); }
-  100% {transform: scale(1);
-  }
+.cadastro-box button:active {
+  transform: scale(0.95);
 }
 
 .social {
@@ -201,33 +197,42 @@ body {
   margin: 40px 0 20px;
 }
 
-.titulo-personagens {
+.titulo-personagens h2 {
   font-size: 28px;
   font-weight: 700;
   color: whitesmoke;
 }
 
-.personagens {
+.carrossel {
   display: flex;
-  justify-content: space-around;
-  margin: 40px 0;
-  flex-wrap: wrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 20px;
+  scrollbar-width: none;
+}
+
+.carrossel::-webkit-scrollbar {
+  display: none;
 }
 
 .personagem {
-  width: 250px;
+  flex: 0 0 280px;
   text-align: center;
-  margin: 15px;
-  background: #f4f4f4;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  background-color: #f4f4f4;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+}
+
+.personagem:hover {
+  transform: scale(1.05);
 }
 
 .personagem img {
   width: 180px;
-  max-width: 220px;
-  height: auto;
+  height: 200px;
   border-radius: 8px;
   margin-bottom: 10px;
   object-fit: cover;
