@@ -52,7 +52,7 @@
 
             <div class="btn-nav-white">
                 <a href="./mural.html">
-                    <h3>Informações</h3>
+                    <h3>Info</h3>
                 </a>
             </div>
 
@@ -143,6 +143,15 @@
             });
     }
 
+    function buscarEscolhasLugar() {
+        fetch('/dashboard/lugar')
+            .then(function (resposta) {
+                resposta.json().then(function (dados) {
+                    plotarGraficoLugar(dados);
+                });
+            });
+    }
+
     function plotarGraficoMedo(dados) {
         var labels = [];
         var valores = [];
@@ -175,7 +184,7 @@
 
         for (var i = 0; i < dados.length; i++) {
             labels.push(dados[i].texto);
-            labels.push(dados[i].total);
+            valores.push(dados[i].total);
         }
         new Chart(document.getElementById('graficoPerfil'), {
             type: 'pie',
@@ -185,6 +194,33 @@
 
                 datasets: [{
                     label: 'Perfis',
+                    data: valores,
+                    borderWidth: 1
+                }]
+            },
+
+            options: {
+                responsive: true
+            }
+        });
+    }
+
+     function plotarGraficoLugar(dados) {
+        var labels = [];
+        var valores = [];
+
+        for (var i = 0; i < dados.length; i++) {
+            labels.push(dados[i].texto);
+            valores.push(dados[i].total);
+        }
+        new Chart(document.getElementById('graficoLugar'), {
+            type: 'bar',
+
+            data: {
+                labels: labels,
+
+                datasets: [{
+                    label: 'Lugar',
                     data: valores,
                     borderWidth: 1
                 }]

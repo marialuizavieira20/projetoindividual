@@ -37,7 +37,7 @@
     </div>
   </div>
 
-  <div class="login">
+  <div class="cadastro">
     <div class="alerta_erro">
       <div class="card_erro" id="cardErro">
         <span id="mensagem_erro"></span>
@@ -74,7 +74,7 @@
           <img src="./assets/circle-loading.gif" id="loading-gif" />
         </div>
 
-        <div id="div_erros_login"></div>
+        <div id="div_erros_cadastro"></div>
       </div>
     </div>
   </div>
@@ -101,7 +101,7 @@
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
     var codigoVar = codigo_input.value;
-    var idEmpresaVincular;
+    var idUsuarioAtual;
 
 
     if (
@@ -120,7 +120,7 @@
     for (var i = 0; i < UsuariosCadastrados.length; i++) {
       if (UsuariosCadastrados[i].codigo_ativacao == codigoVar) {
         codigoValido = true;
-        idEmpresaVincular = UsuariosCadastrados[i].id;
+        idUsuarioAtual = UsuariosCadastrados[i].id;
         break;
       }
     }
@@ -167,7 +167,6 @@
       mostrarErro("A senha deve conter pelo menos um número.");
       return false;
     }
-
 
     var temMaiuscula = false;
     for (var i = 0; i < senhaVar.length; i++) {

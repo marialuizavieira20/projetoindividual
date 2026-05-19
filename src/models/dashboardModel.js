@@ -44,8 +44,19 @@ function buscarCards() {
   return database.executar(instrucaoSql);
 }
 
+function buscarEscolhasLugar() {
+  var instrucaoSql =
+  `SELECT a.texto, COUNT(*) AS total
+  FROM respostas r
+  JOIN alternativas a
+  ON r.fkAlternativa = a.idAlternativa
+  WHERE r.fkPergunta = 1
+  GROUP BY a.texto;`;
+}
+
 module.exports = {
   buscarMedos,
   buscarPerfis,
-  buscarCards
+  buscarCards,
+  buscarEscolhasLugar
 }

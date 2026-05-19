@@ -25,7 +25,6 @@ body {
 
 .header {
   height: var(--tamanho-header);
-  /*border-bottom: 2px solid #097a13;*/
 }
 
 .header .container {
@@ -43,6 +42,7 @@ body {
   font-weight: 800;
 }
 
+/* Barra de navegação */
 .navbar {
   width: 300px;
   display: flex;
@@ -86,6 +86,7 @@ body {
   font-weight: 800;
 }
 
+/* Botão de cadastro tela Home */
 .cadastro-box {
   text-align: center;
   margin: 10px 0;
@@ -114,6 +115,7 @@ body {
   transform: scale(0.95);
 }
 
+/* Tópicos tela Home */
 .social {
   background-color: #7ba37d;
   display: flex;
@@ -192,6 +194,7 @@ body {
 .ellie { background-color: #f0f0f0; }
 .serie { background-color: #e0e0e0; }
 
+/* Carrossel dos personagens */
 .titulo-personagens {
   text-align: center;
   margin: 40px 0 20px;
@@ -238,6 +241,7 @@ body {
   object-fit: cover;
 }
 
+/* Footer */
 .footer {
   background-color: #004011;
   height: 150px;
@@ -255,8 +259,8 @@ body {
   font-size: 12px;
 }
 
-/* LOGIN */
-.login {
+/* Página de Cadastro */
+.cadastro {
   min-height: 100vh; 
   display: flex;
   justify-content: center;
@@ -361,11 +365,10 @@ body {
   width: 50px;
 }
 
-#div_erros_login {
+#div_erros_cadastro {
   display: none
 }
 
-/* FORMULARIO */
 .alerta_erro{
   display: flex;
   justify-content: flex-end;
@@ -429,52 +432,6 @@ input {
 .loading-div img {
   height: 50px;
   width: 50px;
-}
-
-/* ALERTA */
-#alerta {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-
-.mensagem-alarme {
-  background-color: white;
-  border-radius: 5px;
-  width: 300px;
-  height: 80px;
-  margin: 10px;
-  padding: 10px 0;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.mensagem-alarme h3 {
-  font-size: 14px;
-  margin: 0;
-}
-
-.mensagem-alarme .informacao {
-  width: 66%;
-}
-
-.alarme-sino {
-  width: 48px;
-  height: 48px;
-  animation-name: bell;
-  animation-duration: 4s;
-  background-image: url('https://wallpapercave.com/wp/wp5432179.jpg');
-  background-size: cover;
-  animation-iteration-count: infinite;
-}
-
-@keyframes bell {
-  0%   {transform: rotate(25deg)}
-  25%  {transform: rotate(-25deg)}
-  50%  {transform: rotate(25deg)}
-  75%  {transform: rotate(-25deg)}
-  100% {transform: rotate(25deg)}
 }
 
 .pagina {

@@ -3,31 +3,32 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Arial', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Raleway', sans-serif;;
   background-color: rgb(21, 31, 20);
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 :root {
   --tamanho-header: 80px;
   --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-quiz: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-footer: 65px;
 }
 
 .container {
   display: flex;
-  width: 80%;
+  width: 70%;
   margin: auto;
 }
 
 .header {
   height: var(--tamanho-header);
-  border-bottom: 2px solid #097a13;
 }
 
 .header .container {
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
 }
@@ -41,6 +42,7 @@ body {
   font-weight: 800;
 }
 
+/* Barra de navegação */
 .navbar {
   width: 300px;
   display: flex;
@@ -60,16 +62,15 @@ body {
   margin: 0;
 }
 
-
 .banner {
   height: var(--tamanho-banner);
   color: white;
-  background-image: url('https://wallpaperaccess.com/full/459687.jpg');
+  background-image: url('https://wallup.net/wp-content/uploads/2016/01/93997-The_Last_of_Us-video_games-Ellie-Joel.jpg');
   background-size: cover;
 }
 
 .banner .container {
-  justify-content: center;
+  justify-content: right;
   align-items: center;
   height: 100%;
 }
@@ -84,7 +85,6 @@ body {
 .banner .container span {
   font-weight: 800;
 }
-
 
 .social {
   background-color: #aeaeae;
@@ -116,8 +116,6 @@ body {
   align-items: center;
 }
 
-/* FOOTER */
-
 .footer {
   background-color: #004011;
   height: 150px;
@@ -135,7 +133,6 @@ body {
   font-size: 12px;
 }
 
-/* LOGIN */
 
 .login {
   min-height: 100vh; 
@@ -247,8 +244,6 @@ body {
   display: none
 }
 
-/* FORMULARIO */
-
 .alerta_erro{
   display: flex;
   justify-content: flex-end;
@@ -314,8 +309,6 @@ input {
   width: 50px;
 }
 
-/* SIMULADOR */
-
 .simulador {
   color: white;
 }
@@ -326,7 +319,6 @@ input {
   height: var(--tamanho-simulador);
 }
 
-/* ALERTA */
 
 #alerta {
   position: absolute;
