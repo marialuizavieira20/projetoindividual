@@ -2,22 +2,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
 :root {
-  --verde-escuro:   #1e3a1e; 
-  --verde-medio:    #2d5a2d;   
-  --verde-claro:    #3f7a3f;   
-  --verde-neon:     #4caf50;  
-  --verde-oliva:    #3f5f3a;   
+  --verde-escuro: #1e3a1e;
+  --verde-medio: #2d5a2d;
+  --verde-claro: #3f7a3f;
+  --verde-neon: #4caf50;
+  --verde-oliva: #3f5f3a;
 
-  --fundo-principal: #111311;  
-  --fundo-sidebar:   #161c16;  
-  --fundo-card:      #1a221a;  
+  --fundo-principal: #111311;
+  --fundo-sidebar: #161c16;
+  --fundo-card: #1a221a;
 
-  --rosa:    #e6005a;         
-  --ciano:   #32b9cd;          
-  --dourado: #e3b062;         
-  --texto:        #d4d4d4;
-  --texto-apagado:#6b7c6b;     
-  --borda:        #243024;    
+  --rosa: #e6005a;
+  --ciano: #32b9cd;
+  --dourado: #e3b062;
+  --texto: #d4d4d4;
+  --texto-apagado: #6b7c6b;
+  --borda: #243024;
 }
 
 * {
@@ -32,9 +32,18 @@ body {
   color: var(--texto);
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--fundo-sidebar); }
-::-webkit-scrollbar-thumb { background: var(--verde-medio); border-radius: 3px; }
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--fundo-sidebar);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--verde-medio);
+  border-radius: 3px;
+}
 
 a {
   text-decoration: none;
@@ -61,7 +70,7 @@ a {
 
   border-right: 3px solid var(--ciano);
 
-  box-shadow: 4px 0 20px rgba(0,0,0,0.6);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.6);
 }
 
 .header-left a {
@@ -150,21 +159,26 @@ a {
 }
 
 .dash {
-  margin-left: 260px;
-  width: calc(100% - 260px);
-  min-height: 100vh;
-  padding: 30px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 20px;
+  padding: 20px;
+  width: 80%;
+  left: 20%;
+  position: relative;
   background-color: var(--fundo-principal);
+  min-height: 100vh;
+  align-content: flex-start;
 }
 
-.card {
+.card-dash {
   background-color: var(--fundo-card);
   border: 1px solid var(--borda);
   border-radius: 12px;
   padding: 24px;
+  flex: 1;
+  min-width: 200px;
   min-height: 180px;
   display: flex;
   flex-direction: column;
@@ -176,12 +190,12 @@ a {
   overflow: hidden;
 }
 
-.card:hover {
+.card-dash:hover {
   border-color: var(--verde-medio);
   transform: translateY(-3px);
 }
 
-.card::after {
+.card-dash::after {
   content: '';
   position: absolute;
   bottom: -20px;
@@ -194,9 +208,8 @@ a {
   pointer-events: none;
 }
 
-.card h2 {
-  font-size: 1rem;
-  line-height: 1.3;
+.card-dash h2 {
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--texto-apagado);
   text-transform: uppercase;
@@ -204,12 +217,13 @@ a {
   margin: 0;
 }
 
-.card span {
-  font-size: 2rem;
+.card-dash span {
+  font-size: 2.5rem;
   font-weight: 800;
   color: var(--verde-neon);
   font-family: 'Special Elite', serif;
   line-height: 1;
+  margin-top: 10px;
 }
 
 #graficos {
@@ -348,7 +362,7 @@ canvas {
   padding: 20px;
 }
 
-.publicacao > *:not(:last-child) {
+.publicacao>*:not(:last-child) {
   padding: 0 0 10px 0;
 }
 
@@ -367,13 +381,21 @@ canvas {
   justify-content: flex-end;
 }
 
-.div-buttons > * {
+.div-buttons>* {
   margin-left: 30px;
 }
 
-.display-none  { display: none; }
-.display-flex  { display: flex; }
-.display-block { display: block; }
+.display-none {
+  display: none;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.display-block {
+  display: block;
+}
 
 .label-captura {
   display: flex;
@@ -420,9 +442,21 @@ canvas {
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.dash     { animation: fadeUp 0.4s ease both 0.1s; }
-#graficos { animation: fadeUp 0.4s ease both 0.2s; }
+.dash {
+  animation: fadeUp 0.4s ease both 0.1s;
+}
+
+#graficos {
+  animation: fadeUp 0.4s ease both 0.2s;
+}

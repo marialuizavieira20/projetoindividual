@@ -1,4 +1,4 @@
-var dashboarMdodel = require("../models/dashboardModel");
+var dashboardModel = require("../models/dashboardModel");
 
 function buscarMedos(req, res) {
 dashboardModel.buscarMedos() 
@@ -44,9 +44,21 @@ function buscarEscolhasLugar(req, res) {
   });
 }
 
+function buscarJornadaUsuario(req, res) {
+  dashboardModel.buscarJornadaUsuario()
+  .then(function(resultado) {
+    res.json(resultado[0]);
+  })
+  .catch(function(erro) {
+    console.log(erro);
+    res.status(500).json(erro.sqlMessage);
+  });
+}
+
 module.exports = {
   buscarMedos,
   buscarPerfis,
   buscarCards,
-  buscarEscolhasLugar
+  buscarEscolhasLugar,
+  buscarJornadaUsuario
 }

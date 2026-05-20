@@ -444,6 +444,18 @@ input {
   border-radius: 10px;
 }
 
+.cadastro-login a {
+ color: #0f6932;
+ font-weight: 800;
+ text-decoration: none;
+ transition: color 0.2s;
+}
+
+.cadastro-login a:hover {
+  color: #2fa05a;
+  text-decoration: underline;
+}
+
 /* CSS do Quiz */
 
 .quiz {

@@ -13,8 +13,7 @@ CREATE TABLE usuarios (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nome VARCHAR(100) NOT NULL,
   email VARCHAR(100) UNIQUE NOT NULL,
-  senha VARCHAR(255) NOT NULL,
-  codigo_ativacao VARCHAR(50) UNIQUE
+  senha VARCHAR(255) NOT NULL
 );
 
 
@@ -46,13 +45,57 @@ CREATE TABLE alternativas (
 );
 
 -- Inserindo usuários com códigos de ativação
-INSERT INTO usuarios (nome, email, senha, codigo_ativacao)
-VALUES ('Maria Luiza', 'marialuiza@sptech.com', 'Lu123!', 'AEI456');
+INSERT INTO usuarios (nome, email, senha)
+VALUES ('Maria Luiza', 'marialuiza@sptech.com', 'Lu123!');
 
-INSERT INTO usuarios (nome, email, senha, codigo_ativacao)
-VALUES ('Carolina Dias', 'caroldias@gmail.com', 'carol875!', 'XPTO26');
+INSERT INTO usuarios (nome, email, senha)
+VALUES ('Carolina Dias', 'caroldias@gmail.com', 'carol875!');
 
-INSERT INTO usuarios (nome, email, senha, codigo_ativacao)
-VALUES ('Joaquim Veloso', 'joaquimveloso@gmail.com', 'veloso342!', 'CORE13');
+INSERT INTO usuarios (nome, email, senha)
+VALUES ('Joaquim Veloso', 'joaquimveloso@gmail.com', 'veloso342!');
+
+-- Inserindo as perguntas
+INSERT INTO perguntas (idPergunta, texto, categoria) VALUES
+(1, 'Em um cenário pós-apocalíptico, qual lugar você escolheria para viver?', 'Local'),
+(2, 'Se depois de alguns dias, faltasse comida e mantimentos, o que você faria?', 'Comida'),
+(3, 'O que mais te causaria medo?', 'Medo'),
+(4, 'Como você resolveria os seus conflitos?', 'Conflito'),
+(5, 'O que mais importa?', 'Importância'),
+(6, 'Se você encontrasse um desconhecido ferido à beira da morte, o que faria?', 'Desconhecido'),
+(7, 'Que tipo de pessoa você acredita seria nesse ambiente?', 'Perfil');
+
+-- Inserindo as alternativas
+INSERT INTO alternativas (idAlternativa, texto, fkPergunta) VALUES
+(1, 'Seattle', 1),
+(2, 'Santa Barbara', 1),
+(3, 'Atlanta', 1),
+(4, 'Silver Lake', 1),
+(5, 'Dividiria o pouco que tenho, até a alguma gota de água', 2),
+(6, 'Me juntaria em equipe para buscar mantimentos', 2),
+(7, 'Tentaria negociar recursos se estivesse em larga escala de pessoas', 2),
+(8, 'Procuraria comida sozinho, deixando minha equipe de fora', 2),
+(9, 'Ficar sozinho no meio do apocalipse', 3),
+(10, 'Perder pessoas importantes na minha vida', 3),
+(11, 'Ser mordido e morrer por conta dos infectados', 3),
+(12, 'Pessoas perigosas e gangues', 3),
+(13, 'Tentaria conversar, para não tomar nenhuma atitude precipitada', 4),
+(14, 'Resolveria na força bruta, pois seria a única maneira', 4),
+(15, 'Criaria uma estratégia para analisar a melhor ação naquele cenário', 4),
+(16, 'Tentaria evitar a conversa ao máximo, em prol da sobrevivência', 4),
+(17, 'Proteger a minha família e aqueles que amo', 5),
+(18, 'Ter liberdade e poder fazer o meu caminho sozinho', 5),
+(19, 'Garantir sempre a minha sobrevivência, custe o que custar', 5),
+(20, 'Ter sempre um pingo de esperança, tentando observar algum caminho otimista', 5),
+(21, 'Iria ajudar sem nem pensar duas vezes', 6),
+(22, 'Eu ajudaria, mas tomaria todo o cuidado e ficaria em alerta a todo momento', 6),
+(23, 'Iria embora, afinal, não é um problema meu', 6),
+(24, 'Observaria com bastante cautela, antes de tomar qualquer decisão', 6),
+(25, 'Seria um líder no meu grupo, tomando sempre a iniciativa com coragem', 7),
+(26, 'Seria um sobrevivente, que agiria de forma silenciosa', 7),
+(27, 'Iria ser muito protetor com todos, lutando sempre pelo meu grupo', 7),
+(28, 'Seria um explorador, caminhando sozinho para sobreviver', 7);
 
 SELECT * FROM usuarios;
+SELECT * FROM perguntas;
+SELECT * FROM respostas;
+SELECT * FROM alternativas;

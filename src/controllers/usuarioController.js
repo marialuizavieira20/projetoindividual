@@ -17,7 +17,6 @@ function autenticar(req, res) {
                         id: resultadoAutenticar[0].id,
                         email: resultadoAutenticar[0].email,
                         nome: resultadoAutenticar[0].nome,
-                        codigo_ativacao: resultadoAutenticar[0].codigo_ativacao
                     });
                 } else if (resultadoAutenticar.length == 0) {
                     res.status(403).send("Email e/ou senha inválido(s)");
@@ -36,7 +35,6 @@ function cadastrar(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    var codigoAtivacao = req.body.codigoAtivacaoServer;
 
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -44,10 +42,8 @@ function cadastrar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else if (codigoAtivacao == undefined) {
-        res.status(400).send("Seu código de ativação está undefined!");
     } else {
-        usuarioModel.cadastrar(nome, email, senha, codigoAtivacao)
+        usuarioModel.cadastrar(nome, email, senha)
             .then(function (resultado) {
                 res.json(resultado);
             })

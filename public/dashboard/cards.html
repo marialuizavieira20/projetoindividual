@@ -33,7 +33,7 @@
             </div>
 
             <div class="btn-nav">
-                <h3>Missões</h3>
+                <h3>Missão</h3>
             </div>
 
             <div class="btn-nav-white">
@@ -55,37 +55,45 @@
         </div>
 
         <div class="dash">
-            <div id="alerta">
+            <div id="missão">
             </div>
-            <div class="area-parametros-alerta">
-                <p class="titulo-legenda">
-                   Suas Missões
+            <div class="informacoes-missao">
+                <p class="titulo-missao">
+                   Sua Missão
                 </p>
-                <div class="parametros-alerta">
-                    <div class="item-regua perigo-frio">
+                <div class="parametros-missao">
+                    <div class="local-escolha">
                         <p>Local</p>
                         <p>&lt;</p>
                     </div>
-                    <div class="item-regua alerta-frio">
+                    <div class="mantimentos-escolha">
                         <p>Mantimentos</p>
                         <p>&lt;</p>
                     </div>
-                    <div class="item-regua ideal">
+                    <div class="medo_escolha">
                         <p>Medos</p>
                         <p></p>
                     </div>
-                    <div class="item-regua alerta-quente">
-                        <p>Perfil</p>
+                    <div class="conflito-escolha">
+                        <p>Conflito</p>
                         <p>&gt;</p>
                     </div>
-                    <div class="item-regua perigo-quente">
-                        <p>ImportÂncia</p>
+                    <div class="importancia-escolha">
+                        <p>Importância</p>
+                        <p>&gt;</p>
+                    </div>
+                    <div class="desconhecido-escolha">
+                        <p>Ajudar Desconhecido</p>
+                        <p>&gt;</p>
+                    </div>
+                    <div class="perfil-escolha">
+                        <p>Perfil</p>
                         <p>&gt;</p>
                     </div>
                 </div>
             </div>
 
-            <div class="cards" id="cardAquarios">
+            <div class="cards" id="cardMissao">
 
             </div>
 
@@ -99,7 +107,7 @@
 
     function exibirAquarios() {
         JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
-            document.getElementById("cardAquarios").innerHTML += `
+            document.getElementById("cardMissao").innerHTML += `
                     <div class="card-aquario">
                         <div class="title-aquario">
                             <h1>${item.descricao}</h1>

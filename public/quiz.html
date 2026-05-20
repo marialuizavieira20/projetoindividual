@@ -119,6 +119,7 @@
 
 </html>
 <script>
+
     function enviarQuiz() {
         var lugar = select_lugar.value;
         var comida = select_comida.value;
@@ -138,7 +139,10 @@
             perfil == ""
         ) {
             alert("Responda todas as perguntas");
-        }
+        } else if(!sessionStorage.ID_USUARIO) {
+        alert('Por favor, se cadastre ou realize o login para fazer o quiz!');
+        window.location.href = './login.html';
+    }
 
         else {
             var respostas = [

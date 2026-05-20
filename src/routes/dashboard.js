@@ -15,4 +15,8 @@ router.get("/cards", function(req, res) {
   dashboardController.buscarCards(req, res);
 });
 
+router.get("/jornada/:idUsuario", function(req, res) {
+  dashboardController.buscarCards(req, res);
+});
+
 module.exports = router; 

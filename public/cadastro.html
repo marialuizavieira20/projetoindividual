@@ -47,11 +47,7 @@
       <div class="card card-cadastro">
         <h2>Bem-vindo ao LastCore!</h2>
         <div class="formulario">
-
-          <div class="campo">
-            <span>Seu Código de Ativação:</span>
-            <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
-          </div>
+<br>
           <div class="campo">
             <span>Digite seu nome:</span>
             <input id="nome_input" type="text" placeholder="Seu nome" />
@@ -73,6 +69,9 @@
         <div id="div_aguardar" class="loading-div">
           <img src="./assets/circle-loading.gif" id="loading-gif" />
         </div>
+        <div class="cadastro-login">
+          <h4>Já possui cadastro? <a href="./login.html">Faça o seu login!</a></h4>
+        </div>
 
         <div id="div_erros_cadastro"></div>
       </div>
@@ -91,16 +90,11 @@
 
 <script>
 
-  let UsuariosCadastrados = [
-    { id: 3, codigo_ativacao: "CORE13" }
-  ];
-
   function cadastrar() {
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
     var idUsuarioAtual;
 
 
@@ -108,27 +102,11 @@
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == ""
+      confirmacaoSenhaVar == ""
     ) {
       mostrarErro("Todos os campos devem ser preenchidos.");
       return false;
     }
-
-
-    var codigoValido = false;
-    for (var i = 0; i < UsuariosCadastrados.length; i++) {
-      if (UsuariosCadastrados[i].codigo_ativacao == codigoVar) {
-        codigoValido = true;
-        idUsuarioAtual = UsuariosCadastrados[i].id;
-        break;
-      }
-    }
-    if (!codigoValido) {
-      mostrarErro("Código de ativação inválido!");
-      return false;
-    }
-
 
     if (emailVar != emailVar.toLowerCase()) {
       mostrarErro("Seu e-mail deve ser constituído apenas com letras minúsculas.");
@@ -186,7 +164,7 @@
       return false;
     }
 
-    console.log("Tentando cadastrar:", nomeVar, emailVar, codigoVar);
+    console.log("Tentando cadastrar:", nomeVar, emailVar);
 
     fetch("/usuarios/cadastrar", {
       method: "POST",
@@ -195,7 +173,6 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        codigoAtivacaoServer: codigoVar
       }),
     })
       .then(function (resposta) {
