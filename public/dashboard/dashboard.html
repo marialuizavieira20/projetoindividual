@@ -38,12 +38,6 @@
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
 
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Missões</h3>
-                </a>
-            </div>
-
             <div class="btn-nav">
 
                 <h3>Dashboard</h3>
@@ -63,32 +57,44 @@
 
         </div>
 
-        <div class="dash">
-            <div class="card-dash">
-                <h2>Total de Jogadores</h2>
-                <span id="span_jogadores">0</span>
+        <div class="conteudo-dashboard">
+            <div class="dash">
+                <div class="card-dash">
+                    <h2>Total de Jogadores</h2>
+                    <span id="span_jogadores">0</span>
+                </div>
+
+                <div class="card-dash">
+                    <h2>Total de Respostas</h2>
+                    <span id="span_respostas">0</span>
+                </div>
+
+                <div class="card-dash">
+                    <h2>Perfil Comum</h2>
+                    <span id="span_perfil">-</span>
+                </div>
             </div>
 
-            <div class="card-dash">
-                <h2>Total de Respostas</h2>
-                <span id="span_respostas">0</span>
-            </div>
+            <div id="graficos">
+                <div class="graph">
+                    <h2>Maior Medo</h2>
+                    <canvas id="graficoMedo"></canvas>
+                </div>
 
-            <div class="card-dash">
-                <h2>Perfil Comum</h2>
-                <span id="span_perfil">-</span>
-            </div>
-        </div>
+                <div class="card-dash">
+                    <h2>Taxa de Sobrevivência</h2>
+                    <span id="span_taxa">0%</span>
+                </div>
 
-        <div id="graficos">
-            <div class="graph">
-                <h2>Maior Medo</h2>
-                <canvas id="graficoMedo"></canvas>
-            </div>
+                <div class="card-dash">
+                    <h2>Risco Médio</h2>
+                    <span id="span_risco">0</span>
+                </div>
 
-            <div class="graph">
-                <h2>Perfil dos Jogadores</h2>
-                <canvas id="graficoPerfil"></canvas>
+                <div class="graph">
+                    <h2>Perfil dos Jogadores</h2>
+                    <canvas id="graficoPerfil"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -100,6 +106,37 @@
 </html>
 
 <script>
+    var coresTLOU = [
+        '#4caf50',
+        '#e6005a',
+        '#32b9cd',
+        '#e3b062',
+        '#2d5a2d',
+    ];
+
+    var opcoesGrafico = {
+        responsive: true,
+        plugins: {
+            legend: {
+                labels: {
+                    color: '#d4d4d4',
+                    font: { family: 'Barlow', size: 12 }
+                }
+            }
+        },
+        scales: {
+            x: {
+                ticks: { color: '#6b7c6b', font: { size: 11 } },
+                grid: { color: '#243024' }
+            },
+            y: {
+                ticks: { color: '#6b7c6b' },
+                grid: { color: '#243024' },
+                beginAtZero: true
+            }
+        }
+    };
+
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     window.onload = carregarDashboard();
@@ -121,6 +158,17 @@
                     span_jogadores.innerHTML = dados.totalUsuarios;
                     span_respostas.innerHTML = dados.totalRespostas;
                     span_perfil.innerHTML = dados.perfilPopular;
+
+                    var sobreviventes = dados.totalSobreviventes;
+                    var taxa =
+                        (sobreviventes / dados.totalUsuarios) * 100;
+                    span_taxa.innerHTML =
+                        taxa.toFixed(1) + "%";
+                    var risco =
+                        (dados.totalRespostas / dados.totalUsuarios) / 2;
+                    span_risco.innerHTML =
+                        risco.toFixed(1);
+
                 });
             });
     }
@@ -167,14 +215,15 @@
                 labels: labels,
 
                 datasets: [{
-                    label: 'Quantidade de respostas',
+                    label: 'Respostas',
                     data: valores,
-                    borderWidth: 1
+                    backgroundColor: coresTLOU,
+                    borderColor: '#111311',
+                    borderWidth: 2,
+                    borderRadius: 6
                 }]
             },
-            options: {
-                responsive: true
-            }
+            options: opcoesGrafico
         });
     }
 
@@ -195,17 +244,30 @@
                 datasets: [{
                     label: 'Perfis',
                     data: valores,
-                    borderWidth: 1
+                    borderWidth: 3,
+                    backgroundColor: coresTLOU,
+                    borderColor: '#111311'
                 }]
             },
 
             options: {
-                responsive: true
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#d4d4d4',
+                            font: { family: 'Barlow', size: 11 },
+                            padding: 16,
+                            boxWidth: 14
+                        }
+                    }
+                }
             }
         });
     }
 
-     function plotarGraficoLugar(dados) {
+    function plotarGraficoLugar(dados) {
         var labels = [];
         var valores = [];
 

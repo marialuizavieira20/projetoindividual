@@ -1,4 +1,4 @@
-var avisoModel = require("../models/avisoModel");
+/*var avisoModel = require("../models/avisoModel");
 
 function listar(req, res) {
     avisoModel.listar().then(function (resultado) {
@@ -133,4 +133,4 @@ module.exports = {
     publicar,
     editar,
     deletar
-}
+}*/

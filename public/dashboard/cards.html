@@ -20,7 +20,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
+<body onload="validarSessao(), exibirMissao()" >
 
     <div class="janela">
 
@@ -105,23 +105,27 @@
 
 <script>
 
-    function exibirAquarios() {
-        JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
-            document.getElementById("cardMissao").innerHTML += `
-                    <div class="card-aquario">
-                        <div class="title-aquario">
-                            <h1>${item.descricao}</h1>
-                        </div>
-                        <div class="desc-aquario">
-                        <div class="temperatura">
-                            <p id="temp_aquario_${item.id}">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_${item.id}"></div>
+    function exibirMissao() {
+    fetch("/usuarios/buscarMissao")
+        .then(function (resposta) {
+            resposta.json().then(function (dados) {
+                cardMissao.innerHTML = `
+                <div class="card-aquario">
+                    <div class="title-aquario">
+                        <h1>${dados.perfil}</h1>
                     </div>
+                    <div class="desc-aquario">
+                        <p><b>Local:</b> ${dados.local}</p>
+                        <p><b>Mantimentos:</b> ${dados.mantimentos}</p>
+                        <p><b>Medo:</b> ${dados.medo}</p>
+                        <p><b>Conflito:</b> ${dados.conflito}</p>
+                        <p><b>Importância:</b> ${dados.importancia}</p>
                     </div>
-                    `
+                </div>
+                `;
+            });
         });
-    }
+}
 
 </script>
 

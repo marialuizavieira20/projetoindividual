@@ -70,14 +70,6 @@
         </div>
     </div>
 
-
-    <div class="footer">
-        <div class="container">
-            <h4>Feito com amor por Maria Luiza, aluna &hearts; SPTech &copy; 2026</h4>
-            <span class="version">v1.0.0</span>
-        </div>
-    </div>
-
 </body>
 
 </html>
@@ -91,19 +83,19 @@ function entrar() {
   var senhaVar = senha_input.value;
 
   if (emailVar == "" || senhaVar == "") {
-    mostrarErro("Todos os campos devem ser preenchidos.");
+    alert("Todos os campos devem ser preenchidos.");
     finalizarAguardar();
     return false;
   }
 
   if (emailVar != emailVar.toLowerCase()) {
-    mostrarErro("O e-mail deve ser digitado apenas em letras minúsculas.");
+    alert("O e-mail deve ser digitado apenas em letras minúsculas.");
     finalizarAguardar();
     return false;
   }
 
   if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".") == -1) {
-    mostrarErro("Formato de e-mail inválido.");
+    alert("Formato de e-mail inválido.");
     finalizarAguardar();
     return false;
   }
@@ -117,7 +109,7 @@ function entrar() {
     }
   }
   if (!caractereEspecial) {
-    mostrarErro("A senha deve conter pelo menos um caractere especial.");
+    alert("A senha deve conter pelo menos um caractere especial.");
     finalizarAguardar();
     return false;
   }
@@ -130,7 +122,7 @@ function entrar() {
     }
   }
   if (!Numero) {
-    mostrarErro("A senha deve conter pelo menos um número.");
+    alert("A senha deve conter pelo menos um número.");
     finalizarAguardar();
     return false;
   }
@@ -143,7 +135,7 @@ function entrar() {
     }
   }
   if (!letraMaiuscula) {
-    mostrarErro("A senha deve conter pelo menos uma letra maiúscula.");
+    alert("A senha deve conter pelo menos uma letra maiúscula.");
     finalizarAguardar();
     return false;
   }
@@ -179,17 +171,10 @@ function entrar() {
     }
   }).catch(function (erro) {
     console.log(erro);
-    mostrarErro("Erro inesperado no login.");
+     alert("Erro inesperado no login.");
   });
 
   return false;
-}
-
-function mostrarErro(msg) {
-  cardErro.style.display = "block";
-  cardErro.style.backgroundColor = "red";
-  mensagem_erro.innerHTML = msg;
-  setInterval(sumirMensagem, 5000);
 }
 
 function mostrarSucesso(msg) {

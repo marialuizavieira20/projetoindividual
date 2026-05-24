@@ -27,19 +27,30 @@ function buscarPerfis() {
 }
 
 function buscarCards() {
-  var instrucaoSql = `SELECT
+  var instrucaoSql = `  
+  SELECT
+
   (SELECT COUNT(*) FROM usuarios) AS totalUsuarios,
   (SELECT COUNT(*) FROM respostas) AS totalRespostas,
   (
-  SELECT a.texto
-  FROM respostas r
-  JOIN alternativas a
-  ON r.fkAlternativa = a.idAlternativa
-  WHERE r.fkPergunta = 7
-  GROUP BY a.texto
-  ORDER BY COUNT(*) DESC
-  LIMIT 1
-  ) AS perfilPopular;`;
+    SELECT a.texto
+    FROM respostas r
+    JOIN alternativas a
+    ON r.fkAlternativa = a.idAlternativa
+    WHERE r.fkPergunta = 7
+    GROUP BY a.texto
+    ORDER BY COUNT(*) DESC
+    LIMIT 1
+  ) AS perfilPopular,
+
+  (
+    SELECT COUNT(*)
+    FROM respostas r
+    JOIN alternativas a
+    ON r.fkAlternativa = a.idAlternativa
+    WHERE r.fkPergunta = 7
+    AND a.texto = 'Sobrevivente'
+  ) AS totalSobreviventes;`;
 
   return database.executar(instrucaoSql);
 }

@@ -52,24 +52,23 @@ a {
 
 .janela {
   display: flex;
+  min-height: 100vh;
+  background-color: var(--fundo-principal);
 }
 
 .header-left {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 10;
   height: 100vh;
   width: 260px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-
   background-color: var(--fundo-sidebar);
-
-  border-right: 3px solid var(--ciano);
-
+  border-right: 3px solid var(--verde-neon);
   box-shadow: 4px 0 20px rgba(0, 0, 0, 0.6);
 }
 
@@ -80,7 +79,7 @@ a {
 
 .header-left h1 {
   font-family: 'Special Elite', serif;
-  color: var(--ciano);
+  color: var(--verde-medio);
   letter-spacing: 3px;
   font-size: 1.8rem;
 }
@@ -104,15 +103,16 @@ a {
 .btn-nav {
   width: 40%;
   color: white;
-  background-color: var(--rosa);
+  background-color: #307538;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
   transition: background 0.2s;
+  justify-content: center;
 }
 
 .btn-nav:hover {
-  background-color: #c4004d;
+  background-color: #284d2c;
 }
 
 .btn-nav-white {
@@ -144,7 +144,7 @@ a {
 
 .btn-logout {
   width: 20%;
-  background-color: var(--ciano);
+  background-color: #53a05b;
   color: white;
   border-radius: 10px;
   text-align: center;
@@ -152,6 +152,8 @@ a {
   margin-bottom: 100px;
   cursor: pointer;
   transition: opacity 0.2s;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-logout:hover {
@@ -159,32 +161,23 @@ a {
 }
 
 .dash {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
-  width: 80%;
-  left: 20%;
-  position: relative;
-  background-color: var(--fundo-principal);
-  min-height: 100vh;
-  align-content: flex-start;
+  margin-left: 260px;
+  width: calc(100vw-260px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 30px;
 }
 
 .card-dash {
   background-color: var(--fundo-card);
   border: 1px solid var(--borda);
-  border-radius: 12px;
-  padding: 24px;
-  flex: 1;
-  min-width: 200px;
+  border-radius: 16px;
   min-height: 180px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
   transition: 0.3s;
   position: relative;
   overflow: hidden;
@@ -192,7 +185,7 @@ a {
 
 .card-dash:hover {
   border-color: var(--verde-medio);
-  transform: translateY(-3px);
+  transform: translateY(-5px);
 }
 
 .card-dash::after {
@@ -209,42 +202,38 @@ a {
 }
 
 .card-dash h2 {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--texto-apagado);
   text-transform: uppercase;
-  letter-spacing: 3px;
-  margin: 0;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
 }
 
 .card-dash span {
-  font-size: 2.5rem;
-  font-weight: 800;
+  font-size: 2rem;
   color: var(--verde-neon);
   font-family: 'Special Elite', serif;
-  line-height: 1;
-  margin-top: 10px;
 }
 
 #graficos {
-  width: 80%;
-  position: relative;
-  left: 20%;
-  padding: 0 30px 40px;
+  margin-left: 260px;
+  width: calc(100vw - 260px);
+  padding: 0 30px 30px;
   display: flex;
+  grid-template-columns: 1fr 1fr;
   flex-wrap: wrap;
   gap: 24px;
-  background-color: var(--fundo-principal);
 }
 
 .graph {
-  flex: 1;
-  min-width: 300px;
+  flex: 1 1 500px;
+  min-height: 450px;
   background-color: var(--fundo-card);
   border: 1px solid var(--borda);
-  border-radius: 10px;
+  border-radius: 16px;
   padding: 24px;
-  transition: border-color 0.2s;
+  transition: 0.3s;
 }
 
 .graph:hover {
@@ -252,19 +241,26 @@ a {
 }
 
 .graph h2 {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  color: var(--texto);
+  color: white;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  margin: 0 0 16px;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
   padding-left: 12px;
   border-left: 3px solid var(--verde-neon);
 }
 
+.conteudo-dashboard {
+  width: 100%;
+}
+
 canvas {
   width: 100% !important;
-  max-height: 280px !important;
+  max-height: 300px !important;
+}
+
+@media screen and (max-width: 1100px) {
 }
 
 .dash-right {
