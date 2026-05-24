@@ -98,18 +98,18 @@
       senhaVar == "" ||
       confirmacaoSenhaVar == ""
     ) {
-      mostrarErro("Todos os campos devem ser preenchidos.");
+      alert("Todos os campos devem ser preenchidos.");
       return false;
     }
 
     if (emailVar != emailVar.toLowerCase()) {
-      mostrarErro("Seu e-mail deve ser constituído apenas com letras minúsculas.");
+      alert("Seu e-mail deve ser constituído apenas com letras minúsculas.");
       return false;
     }
 
 
     if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".") == -1) {
-      mostrarErro("Formato de e-mail inválido, tente novamente.");
+      alert("Formato de e-mail inválido, tente novamente.");
       return false;
     }
 
@@ -123,7 +123,7 @@
       }
     }
     if (!temEspecial) {
-      mostrarErro("Deve conter pelo menos um caractere especial.");
+      alert("Deve conter pelo menos um caractere especial.");
       return false;
     }
 
@@ -136,7 +136,7 @@
       }
     }
     if (!temNumero) {
-      mostrarErro("A senha deve conter pelo menos um número.");
+      alert("A senha deve conter pelo menos um número.");
       return false;
     }
 
@@ -148,13 +148,13 @@
       }
     }
     if (!temMaiuscula) {
-      mostrarErro("Sua senha deve conter pelo menos uma letra maiúscula.");
+      alert("Sua senha deve conter pelo menos uma letra maiúscula.");
       return false;
     }
 
 
     if (senhaVar != confirmacaoSenhaVar) {
-      mostrarErro("As senhas não são iguais.");
+      alert("As senhas não são iguais.");
       return false;
     }
 
