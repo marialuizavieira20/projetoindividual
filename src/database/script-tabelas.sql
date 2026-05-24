@@ -99,3 +99,40 @@ SELECT * FROM usuarios;
 SELECT * FROM perguntas;
 SELECT * FROM respostas;
 SELECT * FROM alternativas;
+
+SELECT a.texto, COUNT(*) AS total
+  FROM respostas r
+  JOIN alternativas a
+  ON r.fkAlternativa = a.idAlternativa
+  WHERE r.fkPergunta = 7
+  GROUP BY a.texto;
+  
+  SELECT
+  (SELECT COUNT(*) FROM usuarios) AS totalUsuarios,
+  (SELECT COUNT(*) FROM respostas) AS totalRespostas,
+  (
+    SELECT a.texto
+    FROM respostas r
+    JOIN alternativas a
+    ON r.fkAlternativa = a.idAlternativa
+    WHERE r.fkPergunta = 7
+    GROUP BY a.texto
+    ORDER BY COUNT(*) DESC
+    LIMIT 1
+  ) AS perfilPopular,
+  (
+    SELECT COUNT(*)
+    FROM respostas r
+    JOIN alternativas a
+    ON r.fkAlternativa = a.idAlternativa
+    WHERE r.fkPergunta = 7
+    AND a.texto = 'Sobrevivente'
+  ) AS totalSobreviventes;
+  
+  SELECT a.texto, COUNT(*) AS total
+  FROM respostas r
+  JOIN alternativas a
+  ON r.fkAlternativa = a.idAlternativa
+  WHERE r.fkPergunta = 1
+  GROUP BY a.texto;
+  
