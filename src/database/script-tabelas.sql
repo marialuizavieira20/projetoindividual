@@ -120,14 +120,6 @@ SELECT a.texto, COUNT(*) AS total
     ORDER BY COUNT(*) DESC
     LIMIT 1
   ) AS perfilPopular,
-  (
-    SELECT COUNT(*)
-    FROM respostas r
-    JOIN alternativas a
-    ON r.fkAlternativa = a.idAlternativa
-    WHERE r.fkPergunta = 7
-    AND a.texto = 'Sobrevivente'
-  ) AS totalSobreviventes;
   
   SELECT a.texto, COUNT(*) AS total
   FROM respostas r
@@ -135,4 +127,26 @@ SELECT a.texto, COUNT(*) AS total
   ON r.fkAlternativa = a.idAlternativa
   WHERE r.fkPergunta = 1
   GROUP BY a.texto;
+
+  SELECT p.categoria, a.texto, r.fkAlternativa
+  FROM respostas r
+  JOIN alternativas a ON r.fkAlternativa = a.idAlternativa
+  JOIN perguntas p ON r.fkPergunta = p.idPergunta
+  WHERE r.fkUsuario = ${idUsuario}
+  ORDER BY r.fkPergunta;
+
+SELECT
+(SELECT COUNT(*) FROM usuarios) AS totalUsuarios,
+(SELECT COUNT(*) FROM respostas r2
+WHERE r2.fkpergunta = 1
+AND r2.fkAlternativa = (
+  SELECT fkAlternativa FROM respostas
+  WHERE fkUsuario = ${idUsuario}
+  AND fkPergunta = 1
+)) AS mesmoLugarUsuarios,
+
+(SELECT a.texto FROM respostas r3
+  JOIN alternativas a ON r3.fkAlternativa = a.idAlternativa
+  WHERE r3.fkUsuario = ${idUsuario}
+  AND r3.fkPergunta = 1) AS lugarEscolhido;
   
