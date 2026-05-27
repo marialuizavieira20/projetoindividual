@@ -65,7 +65,7 @@ body {
 .banner {
   height: var(--tamanho-banner);
   color: white;
-  background-image: url('https://wallup.net/wp-content/uploads/2016/01/93997-The_Last_of_Us-video_games-Ellie-Joel.jpg');
+  background-image: url(../assets/imgs/Ellie-Joel-Banner.jpg);
   background-size: cover;
 }
 

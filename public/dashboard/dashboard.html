@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="card-dash">
-                    <h2>Risco Médio</h2>
+                    <h2>Lugar de Sobrevivência</h2>
                     <span id="span_risco">0</span>
                 </div>
 
@@ -158,17 +158,16 @@
                     span_jogadores.innerHTML = dados.totalUsuarios;
                     span_respostas.innerHTML = dados.totalRespostas;
                     span_perfil.innerHTML = dados.perfilPopular;
+                });
+            });
 
-                    var sobreviventes = dados.totalSobreviventes;
-                    var taxa =
-                        (sobreviventes / dados.totalUsuarios) * 100;
-                    span_taxa.innerHTML =
-                        taxa.toFixed(1) + "%";
-                    var risco =
-                        (dados.totalRespostas / dados.totalUsuarios) / 2;
-                    span_risco.innerHTML =
-                        risco.toFixed(1);
+        fetch('/dashboard/taxa/' + sessionStorage.ID_USUARIO)
+            .then(function (resposta) {
+                resposta.json().then(function (dados) {
+                    var taxa = (dados.mesmoLugarUsuarios / dados.totalUsuarios) * 100;
 
+                    span_taxa.innerHTML = taxa.toFixed(1) + "%";
+                    span_risco.innerHTML = dados.lugarEscolhido;
                 });
             });
     }
@@ -236,7 +235,7 @@
             valores.push(dados[i].total);
         }
         new Chart(document.getElementById('graficoPerfil'), {
-            type: 'pie',
+            type: 'bar',
 
             data: {
                 labels: labels,
@@ -276,7 +275,7 @@
             valores.push(dados[i].total);
         }
         new Chart(document.getElementById('graficoLugar'), {
-            type: 'bar',
+            type: 'pie',
 
             data: {
                 labels: labels,

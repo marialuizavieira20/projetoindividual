@@ -55,10 +55,23 @@ function buscarJornadaUsuario(req, res) {
   });
 }
 
+function buscarTaxa(req, res) {
+  var idUsuario = req.params.idUsuario;
+  dashboardModel.buscarTaxaSobrevivencia(idUsuario)
+  .then(function(resultado) {
+    res.json(resultado[0]);
+  })
+  .catch(function(erro) {
+    console.log(erro);
+    res.status(500).json(erro.sqlMessage);
+  });
+}
+
 module.exports = {
   buscarMedos,
   buscarPerfis,
   buscarCards,
   buscarEscolhasLugar,
-  buscarJornadaUsuario
+  buscarJornadaUsuario,
+  buscarTaxa
 }
